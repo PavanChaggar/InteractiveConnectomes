@@ -40,7 +40,7 @@ You can exit the pkg mode by hitting `return`.
 
 To run the notebook, exit the Pkg manager back to the julia REPL and use the following command: 
 
-`using Pluto, Pluto.run()`
+`using Pluto; Pluto.run()`
 
 If you're working on a remote machine, make sure you set up the port forwarding: 
 
