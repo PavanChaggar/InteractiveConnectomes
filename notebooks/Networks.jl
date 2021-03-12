@@ -27,13 +27,13 @@ begin
 end;
 
 # ╔═╡ f19c508e-8110-11eb-316f-61ac2ad98a86
-csv_path = "/home/chaggar/Projects/Connectomes/all_subjects"
+csv_path = "/scratch/oxmbm-shared/Connectomes/all_subjects"
 
 # ╔═╡ 6b782118-8115-11eb-38f8-9b6b1a7a4cc8
-subject_dir = "/home/chaggar/Projects/Connectomes/standard_connectome/scale1/subjects/"
+subject_dir = "/scratch/oxmbm-shared/Connectomes/standard_connectome/scale1/subjects/"
 
 # ╔═╡ 80447dd6-8114-11eb-32fa-4ff09d65bb38
-subjects = Int.(readdlm(csv_path))
+subjects = Int.(readdlm(csv_path));
 
 # ╔═╡ f4ac3174-811d-11eb-0557-6144bd583355
 function norm_adjacency(file, filter)
@@ -49,7 +49,7 @@ function get_laplacian(A)
 end
 
 # ╔═╡ 1346f3f0-811c-11eb-3a72-3f54bef729fc
-@bind n Slider(10:10:100, default=10)
+@bind n Slider(10:5:160, default=5)
 
 # ╔═╡ 8821166c-8115-11eb-222e-51e91bc765ef
 @bind x Slider(1:n)
@@ -121,13 +121,16 @@ md"##### filter: $filter"
 bar(avg_adj[node,:])
 
 # ╔═╡ ad14c160-8191-11eb-172d-ff7b474ca48b
-median(avg_adj[node,:])
+begin
+	median_val = median(avg_adj[node,:])
+	md"##### Median: $median_val"
+end
 
 # ╔═╡ Cell order:
 # ╠═6a18f3e0-8110-11eb-360e-d998359b8bd9
 # ╟─f19c508e-8110-11eb-316f-61ac2ad98a86
 # ╟─6b782118-8115-11eb-38f8-9b6b1a7a4cc8
-# ╟─80447dd6-8114-11eb-32fa-4ff09d65bb38
+# ╠═80447dd6-8114-11eb-32fa-4ff09d65bb38
 # ╠═f4ac3174-811d-11eb-0557-6144bd583355
 # ╟─d3b7cfee-811f-11eb-35b2-852b9f47a030
 # ╠═4d53ed3c-8112-11eb-02cd-fffa8c33742e
